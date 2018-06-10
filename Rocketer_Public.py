@@ -415,7 +415,7 @@ async def on_message(message):
                            f":white_small_square: If you have any questions, ask it to {Rettend.mention}", colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/430347128100093962.gif?v=1")
         await bot.send_message(message.channel, embed=em)
-	if message.content.startswith('r--bot'):
+    if message.content.startswith('r--bot'):
         em = discord.Embed(description= "```md\n"
                                 "<⊐______⊐______⊏THE-ROCKETER-BOT⊐______⊏______⊏>\n"
                                 "<                                                >\n"
