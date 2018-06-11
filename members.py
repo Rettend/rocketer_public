@@ -21,7 +21,7 @@ class Members():
 
     @commands.command()
     async def joined(self, member : discord.Member):
-        await self.bot.say('{0.name} joined in {0.joined_at}'.format(member))
+        await self.bot.say('**{0.name} joined in __{0.joined_at}__**'.format(member))
 
 def setup(bot):
     bot.add_cog(Members(bot))
