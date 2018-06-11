@@ -28,7 +28,7 @@ class NoPermError(Exception):
     pass
 #--------------------------------------------
 
-#----------------COMMANDS--------------------
+#------------------COGS----------------------
 @bot.command()
 async def load(extension_name : str):
     """Loads an extension."""
@@ -52,12 +52,9 @@ if __name__ == "__main__":
         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
+#--------------------------------------------
 
-@bot.command(pass_context=True)
-async def set_welcome(ctx, channel,  mesg):
-	wchannel = discord.utils.get(ctx.message.server.channels, name=channel)
-	await bot.say(f":white_check_mark: Welcome-message set to **{mesg}**\nThe channel is {wchannel.mention}")
-
+#----------------COMMANDS--------------------
 @bot.command(pass_context=True)
 async def whoami(ctx):
     msg = [" a chicken", " a rabbit xd", " a fucking chicken", " _nothing_  hehe", ", wait, who you?", " a giant penis", " the devil >:)", " Donald Trump", " an Alien", " scared as hell... (ha ha)", " somebody, idk u Lol.", " a fat mouse.", " the Sup-sup-super Grandma!", " uhm, Should i know you??", ", ahhhhhh", " You."]
