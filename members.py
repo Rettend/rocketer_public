@@ -25,7 +25,7 @@ class Members():
     
     @commands.command(pass_context=True)
     async def set_welcome(ctx, channel,  mesg):
-        wchannel = discord.utils.get(ctx.server.channels, name=channel)
+        wchannel = bot.get_channel(id=channel)
         emb = discord.Embed(title="DONE!", description=f":white_check_mark: Welcome-message set to **{mesg}**\nThe channel is {wchannel.mention}", colour=0x3498db)
         emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
         await bot.say(embed=emb)
@@ -39,6 +39,6 @@ class Members():
     @bot.event
     async def on_member_remove(member):
         await bot.send_message(wchannel, f"**{member} left without saying anything...** <:thonkSad:421004865049985035>")
-
+    
 def setup(bot):
     bot.add_cog(Members(bot))
