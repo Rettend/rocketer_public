@@ -22,6 +22,19 @@ class Members():
     @commands.command()
     async def joined(self, member : discord.Member):
         await self.bot.say('**{0.name} joined in __{0.joined_at}__**'.format(member))
+    
+    @commands.command(pass_context=True)
+    async def set_welcome(ctx, channel,  mesg):
+	    wchannel = discord.utils.get(ctx.message.server.channels, name=channel)
+	    await bot.say(f":white_check_mark: Welcome-message set to **{mesg}**\nThe channel is {wchannel.mention}")
+
+    @commands.listen()
+    async def on_member_join(member):
+        await bot.send_message(wchannel, embed=em)
+        
+    @commands.listen()
+    async def on_member_remove(member):
+        await bot.send_message(wchannel, f"**{member} left without saying anything...** <:thonkSad:421004865049985035>")
 
 def setup(bot):
     bot.add_cog(Members(bot))
