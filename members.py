@@ -30,13 +30,13 @@ class Members():
         emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
         await bot.say(embed=emb)
 
-    @commands.event
+    @bot.event
     async def on_member_join(member):
         em = discord.Embed(title=f"{member.metion} joined!", description=mesg, colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/391322023739129856.png?v=1")
         await bot.send_message(wchannel, embed=em)
         
-    @commands.event
+    @bot.event
     async def on_member_remove(member):
         await bot.send_message(wchannel, f"**{member} left without saying anything...** <:thonkSad:421004865049985035>")
 
