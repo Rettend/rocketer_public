@@ -4,6 +4,7 @@ from discord.ext import commands
 #-------------------DATA---------------------
 version = "0.8.9"
 owner = ["361534796830081024"]
+startup_extensions = ["members", "rng"]
 bot = commands.Bot(command_prefix='r--', description=None)
 bot.remove_command("help")
 message = discord.Message
@@ -28,6 +29,35 @@ class NoPermError(Exception):
 #--------------------------------------------
 
 #----------------COMMANDS--------------------
+@bot.command()
+async def load(extension_name : str):
+    """Loads an extension."""
+    try:
+        bot.load_extension(extension_name)
+    except (AttributeError, ImportError) as e:
+        await bot.say("```py\n{}: {}\n```".format(type(e).__name__, str(e)))
+        return
+    await bot.say("{} loaded.".format(extension_name))
+
+@bot.command()
+async def unload(extension_name : str):
+    """Unloads an extension."""
+    bot.unload_extension(extension_name)
+    await bot.say("{} unloaded.".format(extension_name))
+
+if __name__ == "__main__":
+    for extension in startup_extensions:
+        try:
+            bot.load_extension(extension)
+        except Exception as e:
+            exc = '{}: {}'.format(type(e).__name__, e)
+            print('Failed to load extension {}\n{}'.format(extension, exc))
+
+@bot.command(pass_context=True)
+async def set_welcome(ctx, channel,  mesg):
+	wchannel = discord.utils.get(ctx.message.server.channels, name=channel)
+	await bot.say(f":white_check_mark: Welcome-message set to **{mesg}**\nThe channel is {wchannel.mention}")
+
 @bot.command(pass_context=True)
 async def whoami(ctx):
     msg = [" a chicken", " a rabbit xd", " a fucking chicken", " _nothing_  hehe", ", wait, who you?", " a giant penis", " the devil >:)", " Donald Trump", " an Alien", " scared as hell... (ha ha)", " somebody, idk u Lol.", " a fat mouse.", " the Sup-sup-super Grandma!", " uhm, Should i know you??", ", ahhhhhh", " You."]
