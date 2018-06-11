@@ -28,13 +28,13 @@ class Members():
         wchannel = discord.utils.get(ctx.message.server.channels, name=channel)
         emb = discord.Embed(title="DONE!", description=f":white_check_mark: Welcome-message set to **{mesg}**\nThe channel is {wchannel.mention}", colour=0x3498db)
         emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
-	    await bot.say(embed=emb)
+        await bot.say(embed=emb)
 
     @commands.listen()
     async def on_member_join(member):
         em = discord.Embed(title=f"{member.metion} joined!". description=mesg, colour=0x3498db)
-	    em.set_thumbnail(url="https://cdn.discordapp.com/emojis/391322023739129856.png?v=1")
-	    await bot.send_message(wchannel, embed=em)
+        em.set_thumbnail(url="https://cdn.discordapp.com/emojis/391322023739129856.png?v=1")
+        await bot.send_message(wchannel, embed=em)
         
     @commands.listen()
     async def on_member_remove(member):
