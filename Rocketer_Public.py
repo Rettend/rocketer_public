@@ -4,7 +4,7 @@ from discord.ext import commands
 #-------------------DATA---------------------
 version = "0.8.9"
 owner = ["361534796830081024"]
-startup_extensions = ["members", "rng"]
+startup_extensions = ["members"]
 bot = commands.Bot(command_prefix='r--', description=None)
 bot.remove_command("help")
 message = discord.Message
