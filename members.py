@@ -23,16 +23,17 @@ class Members():
     async def joined(self, member : discord.Member):
         await self.bot.say('**{0.name} joined in __{0.joined_at}__**'.format(member))
     
-    @commands.command(pass_context=True)
-    async def set_welcome(ctx, channel,  mesg):
-        wchannel = bot.get_channel(id=channel)
-        emb = discord.Embed(title="DONE!", description=f":white_check_mark: Welcome-message set to **{mesg}**\nThe channel is {wchannel.mention}", colour=0x3498db)
-        emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
-        await bot.say(embed=emb)
+    @bot.event
+    async def on_message(message):
+        if message.content.startswith("r--set_welcome"):
+            wchannel = message.channel
+            emb = discord.Embed(title="DONE!", description=f":blue_book: Welcome-message set to this channel!", colour=0x3498db)
+            emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
+            await bot.say(embed=emb)
 
     @bot.event
     async def on_member_join(member):
-        em = discord.Embed(title=f"{member.metion} joined!", description=mesg, colour=0x3498db)
+        em = discord.Embed(title=f"{member.metion} joined!", description="Welcome, have a great time here!  :D", colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/391322023739129856.png?v=1")
         await bot.send_message(wchannel, embed=em)
         
