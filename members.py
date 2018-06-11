@@ -32,7 +32,7 @@ class Members():
 
     @commands.listen()
     async def on_member_join(member):
-        em = discord.Embed(title=f"{member.metion} joined!". description=mesg, colour=0x3498db)
+        em = discord.Embed(title=f"{member.metion} joined!", description=mesg, colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/391322023739129856.png?v=1")
         await bot.send_message(wchannel, embed=em)
         
