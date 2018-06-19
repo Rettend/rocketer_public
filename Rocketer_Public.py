@@ -57,9 +57,9 @@ if __name__ == "__main__":
 #----------------COMMANDS--------------------
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    if perm.manage_messages is not True:
-        raise NoPermError
     if perm.manage_messages is True:
+        raise NoPermError
+    if perm.manage_messages is not True:
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
