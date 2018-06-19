@@ -12,7 +12,7 @@ server = discord.Server
 member = discord.Member
 user = discord.User
 Imox = ["365173881952272384"]
-permissions = discord.Permissions
+perm = discord.Permissions
 underworking = ":warning: **Meh Boi, this command hasn't finished. Please wait until it's got.** :warning:"
 
 #-----------------SETUP----------------------
@@ -57,9 +57,9 @@ if __name__ == "__main__":
 #----------------COMMANDS--------------------
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    if manage_messages is not True:
+    if perm.manage_messages is not True:
         raise NoPermError
-    if manage_messages is True:
+    if perm.manage_messages is True:
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
