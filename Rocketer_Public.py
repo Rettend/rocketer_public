@@ -52,26 +52,24 @@ if __name__ == "__main__":
         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
-
-async def manage_messages():
-    if manage_messages is not True:
-        raise NoPermError
 #--------------------------------------------
 
 #----------------COMMANDS--------------------
-@manage_messages
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    number += 1
-    deleted = await bot.purge_from(ctx.message.channel, limit=number)
-    num = number - 1
-    em = discord.Embed(title=None, description=f'{ctx.message.author} deleted __{num}__ messages', colour=0x3498db)
-    em.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
-    timer = time.strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
-    em.set_footer(text=timer)
-    msg = await bot.send_message(ctx.message.channel, embed=em)
-    await asyncio.sleep(4)
-    await bot.delete_message(msg)
+    if manage_messages is not True:
+        raise NoPermError
+    if manage_messages is True:
+        number += 1
+        deleted = await bot.purge_from(ctx.message.channel, limit=number)
+        num = number - 1
+        em = discord.Embed(title=None, description=f'{ctx.message.author} deleted __{num}__ messages', colour=0x3498db)
+        em.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+        timer = time.strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
+        em.set_footer(text=timer)
+        msg = await bot.send_message(ctx.message.channel, embed=em)
+        await asyncio.sleep(4)
+        await bot.delete_message(msg)
 
 
 @bot.command(pass_context=True)
