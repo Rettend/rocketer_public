@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
 #----------------COMMANDS--------------------
 @bot.command(pass_context=True)
-@bot.has_permission(manage_messages=True)
+@commands.has_permissions(manage_messages=True)
 async def clear(ctx, number : int):
     try:
         number += 1
