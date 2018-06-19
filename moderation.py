@@ -23,7 +23,7 @@ class Mod():
 
     @commands.command(pass_context=True)
     @commands.has_permissions(manage_server=True)
-    async def set_log(ctx, channel : discord.Channel):
+    async def set_log(self, ctx, channel : discord.Channel):
         LogRoom = channel
         e = discord.Embed(title="DONE!", description=f":blue_book: Logging channel set to {LogRoom.mention}!\nThe next moderations will logged there!", colour=0x3498db)
         e.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
@@ -31,7 +31,7 @@ class Mod():
     
     @commands.command(pass_context=True)
     @commands.has_permissions(ban_members=True)
-    async def unban(ctx, user : discord.User, Reason):
+    async def unban(self, ctx, user : discord.User, Reason):
         if user.id == ctx.message.author.id:
             await bot.say("**I won't let you moderate yourself xD**")
         else:
@@ -53,7 +53,7 @@ class Mod():
 
     @commands.command(pass_context=True)
     @commands.has_permissions(ban_members=True)
-    async def ban(ctx, user : discord.User, Day : int, Reason):
+    async def ban(self, ctx, user : discord.User, Day : int, Reason):
         if user.id == ctx.message.author.id:
             await bot.say("**I won't let you moderate yourself xD**")
         else:
@@ -72,7 +72,7 @@ class Mod():
 
     @commands.command(pass_context=True)
     @commands.has_permissions(kick_members=True)
-    async def kick(ctx, user : discord.User, Reason):
+    async def kick(self, ctx, user : discord.User, Reason):
         if user.id == ctx.message.author.id:
             await bot.say("**I won't let you moderate yourself xD**")
         else:
@@ -90,7 +90,7 @@ class Mod():
 
     @commands.command(pass_context=True)
     @commands.has_permissions(manage_messages=True)
-    async def mute(ctx, user : discord.User, duration : int, Reason):
+    async def mute(self, ctx, user : discord.User, duration : int, Reason):
         if user.id == ctx.message.author.id:
             await bot.say("**I won't let you moderate yourself xD**")
         else:
@@ -120,7 +120,7 @@ class Mod():
 
     @commands.command(pass_context=True)
     @commands.has_permissions(manage_messages=True)
-    async def unmute(ctx, user : discord.User, Reason):
+    async def unmute(self, ctx, user : discord.User, Reason):
         if user.id == ctx.message.author.id:
             await bot.say("**I won't let you moderate yourself xD**")
         else:
