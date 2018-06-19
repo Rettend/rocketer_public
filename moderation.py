@@ -25,9 +25,9 @@ class Mod():
     @commands.has_permissions(manage_server=True)
     async def set_log(self, ctx, channel : discord.Channel):
         LogRoom = channel
-        e = discord.Embed(title="DONE!", description=f":blue_book: Logging channel set to {LogRoom.mention}!\nThe next moderations will logged there!", colour=0x3498db)
-        e.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
-        await bot.say(embed=e)
+        emb = discord.Embed(title="DONE!", description=f":blue_book: Logging channel set to {LogRoom.mention}!\nThe next moderations will logged there!", colour=0x3498db)
+        emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
+        await ctx.send(embed=emb)
     
     @commands.command(pass_context=True)
     @commands.has_permissions(ban_members=True)
