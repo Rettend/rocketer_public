@@ -55,7 +55,7 @@ if __name__ == "__main__":
 #--------------------------------------------
 
 #----------------COMMANDS--------------------
-@manage_messages
+@perm(manage_messages)
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
     if ctx.message.author.id in Moderators or Admins:
