@@ -33,7 +33,6 @@ class NoPermError(Exception):
 #------------------COGS----------------------
 @bot.command()
 async def load(extension_name : str):
-    """Loads an extension."""
     try:
         bot.load_extension(extension_name)
     except (AttributeError, ImportError) as e:
@@ -43,7 +42,6 @@ async def load(extension_name : str):
 
 @bot.command()
 async def unload(extension_name : str):
-    """Unloads an extension."""
     bot.unload_extension(extension_name)
     await bot.say("{} unloaded.".format(extension_name))
 
@@ -59,21 +57,21 @@ if __name__ == "__main__":
 #----------------COMMANDS--------------------
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    for ctx.message.author in discord.Server.members:
-        if perm.manage_messages or perm.administrator == True:
-            number += 1
-            deleted = await bot.purge_from(ctx.message.channel, limit=number)
-            num = number - 1
-            em = discord.Embed(title=None, description=f'{ctx.message.author} deleted __{num}__ messages', colour=0x3498db)
-            em.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
-            timer = time.strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
-            em.set_footer(text=timer)
-            msg = await bot.send_message(ctx.message.channel, embed=em)
-            await asyncio.sleep(4)
-            await bot.delete_message(msg)
-        else:
-            await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
-            raise NoPermError
+    user = ctx.message.author
+    if perm.manage_messages or perm.administrator == True:
+        number += 1
+        deleted = await bot.purge_from(ctx.message.channel, limit=number)
+        num = number - 1
+        em = discord.Embed(title=None, description=f'{ctx.message.author} deleted __{num}__ messages', colour=0x3498db)
+        em.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+        timer = time.strftime("%a, %d %b %Y %H:%M:%S", gmtime())
+        em.set_footer(text=timer)
+        msg = await bot.send_message(ctx.message.channel, embed=em)
+        await asyncio.sleep(4)
+        await bot.delete_message(msg)
+    else:
+        await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
+        raise NoPermError
 
 @bot.command(pass_context=True)
 async def whoami(ctx):
