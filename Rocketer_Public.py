@@ -55,6 +55,25 @@ if __name__ == "__main__":
 #--------------------------------------------
 
 #----------------COMMANDS--------------------
+@manage_messages
+@bot.command(pass_context=True)
+async def clear(ctx, number : int):
+    if ctx.message.author.id in Moderators or Admins:
+        number += 1
+        deleted = await bot.purge_from(ctx.message.channel, limit=number)
+        num = number - 1
+        em = discord.Embed(title=None, description=f'{ctx.message.author} deleted __{num}__ messages', colour=0x3498db)
+        em.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+        timer = time.strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
+        em.set_footer(text=timer)
+        msg = await bot.send_message(ctx.message.channel, embed=em)
+        await asyncio.sleep(4)
+        await bot.delete_message(msg)
+    else:
+        await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
+        raise NoPermError
+
+
 @bot.command(pass_context=True)
 async def whoami(ctx):
     msg = [" a chicken", " a rabbit xd", " a fucking chicken", " _nothing_  hehe", ", wait, who you?", " a giant penis", " the devil >:)", " Donald Trump", " an Alien", " scared as hell... (ha ha)", " somebody, idk u Lol.", " a fat mouse.", " the Sup-sup-super Grandma!", " uhm, Should i know you??", ", ahhhhhh", " You."]
