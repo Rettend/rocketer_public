@@ -459,22 +459,7 @@ async def on_message(message):
                                 "         for the commands, type: \"r--list\"```".format(version), colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
     await bot.process_commands(message) #IMPORTANT
-
-
-    
-    
         
-
-
-
-
-
-
-
-
-
-
-
 
 
 token = os.environ.get('DISCORD_TOKEN')
