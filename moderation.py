@@ -27,7 +27,7 @@ class Mod():
         LogRoom = channel
         emb = discord.Embed(title="DONE!", description=f":blue_book: Logging channel set to {LogRoom.mention}!\nThe next moderations will logged there!", colour=0x3498db)
         emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
-        await ctx.send(embed=emb)
+        await bot.say(embed=emb)
     
     @commands.command(pass_context=True)
     @commands.has_permissions(ban_members=True)
