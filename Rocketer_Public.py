@@ -53,13 +53,13 @@ if __name__ == "__main__":
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
 
-def perm(perm : discord.Permissions):
-    if perm is not True:
+async def manage_messages():
+    if manage_messages is not True:
         raise NoPermError
 #--------------------------------------------
 
 #----------------COMMANDS--------------------
-@perm(manage_messages)
+@manage_messages
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
     number += 1
