@@ -24,7 +24,7 @@ class Perms():
     def manage_messages(self):
         return self._bit(8192)
 
-    @manage_roles.setter
+    @manage_messages.setter
     def manage_messages(self, value):
         self._set(8192, value)
 
