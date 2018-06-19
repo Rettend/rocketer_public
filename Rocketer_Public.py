@@ -53,7 +53,7 @@ if __name__ == "__main__":
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
 
-async def perm(perm : discord.Permissions):
+def perm(perm : discord.Permissions):
     if perm is not True:
         raise NoPermError
 #--------------------------------------------
