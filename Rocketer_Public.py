@@ -73,7 +73,7 @@ async def clear(ctx, number : int):
             await bot.delete_message(msg)
         else:
             await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
-            raise NoPermError"""
+            raise NoPermError
 
 @bot.command(pass_context=True)
 async def whoami(ctx):
