@@ -1,6 +1,7 @@
 import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math
 from time import gmtime
 from discord.ext import commands
+from discord.ext.commands.cooldowns import BucketType
 
 #-------------------DATA---------------------
 version = "0.8.9"
@@ -55,10 +56,10 @@ if __name__ == "__main__":
 #--------------------------------------------
 
 #----------------COMMANDS--------------------
-"""@bot.command(pass_context=True)
+@bot.command(pass_context=True)
+@commands.has_permission(manage_messages=True)
 async def clear(ctx, number : int):
-    user = ctx.message.author
-    if perm.manage_messages or perm.administrator == True:
+    try:
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
@@ -69,9 +70,8 @@ async def clear(ctx, number : int):
         msg = await bot.send_message(ctx.message.channel, embed=em)
         await asyncio.sleep(4)
         await bot.delete_message(msg)
-    else:
+    except discord.Forbidden:
         await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
-        raise NoPermError"""
 
 @bot.command(pass_context=True)
 async def whoami(ctx):
