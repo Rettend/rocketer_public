@@ -6,7 +6,7 @@ from discord.ext.commands.cooldowns import BucketType
 #-------------------DATA---------------------
 version = "0.8.9"
 owner = ["361534796830081024"]
-startup_extensions = ["members"]
+startup_extensions = ["members", "moderation"]
 bot = commands.Bot(command_prefix='r--', description=None)
 bot.remove_command("help")
 message = discord.Message
