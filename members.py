@@ -1,3 +1,22 @@
+import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math, asyncpg
+from time import gmtime
+from discord.ext import commands
+
+#-------------------DATA---------------------
+version = "0.8.9"
+owner = ["361534796830081024"]
+bot = commands.Bot(command_prefix='r-', description=None)
+bot.remove_command("help")
+message = discord.Message
+server = discord.Server
+member = discord.Member
+user = discord.User
+Imox = ["365173881952272384"]
+permissions = discord.Permissions
+underworking = ":warning: **Meh Boi, this command hasn't finished. Please wait until it's got.** :warning:"
+"""timer = time.strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())"""
+#--------------------------------------------
+
 class Members():
     def __init__(self, bot):
         self.bot = bot
