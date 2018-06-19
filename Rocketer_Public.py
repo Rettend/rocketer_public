@@ -55,7 +55,7 @@ if __name__ == "__main__":
 #--------------------------------------------
 
 #----------------COMMANDS--------------------
-@bot.command(pass_context=True)
+"""@bot.command(pass_context=True)
 async def clear(ctx, number : int):
     user = ctx.message.author
     if perm.manage_messages or perm.administrator == True:
@@ -71,7 +71,7 @@ async def clear(ctx, number : int):
         await bot.delete_message(msg)
     else:
         await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
-        raise NoPermError
+        raise NoPermError"""
 
 @bot.command(pass_context=True)
 async def whoami(ctx):
