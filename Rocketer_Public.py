@@ -70,9 +70,8 @@ async def clear(ctx, number : int):
         msg = await bot.send_message(ctx.message.channel, embed=em)
         await asyncio.sleep(4)
         await bot.delete_message(msg)
-    if not perm.manage_messages or perm.administrator == True:
-        await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
-        raise NoPermError
+"""        await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
+        raise NoPermError"""
 
 @bot.command(pass_context=True)
 async def whoami(ctx):
