@@ -58,7 +58,7 @@ if __name__ == "__main__":
 #----------------COMMANDS--------------------
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    if perm.manage_messages is True:
+    if perm.manage_messages or perm.administrator is True:
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
@@ -70,8 +70,8 @@ async def clear(ctx, number : int):
         await asyncio.sleep(4)
         await bot.delete_message(msg)
     else:
-        raise NoPermError
         await bot.send_message(ctx.message.channel, f'*Boi, you cant use this command...*')
+	raise NoPermError
 
 @bot.command(pass_context=True)
 async def whoami(ctx):
