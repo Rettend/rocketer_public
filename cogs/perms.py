@@ -19,14 +19,10 @@ underworking = ":warning: **Meh Boi, this command hasn't finished. Please wait u
 class Perms():
     def __init__(self, bot):
         self.bot = bot
-
-    @property
-    def manage_messages(self):
-        return self._bit(8192)
-
-    @manage_messages.setter
-    def manage_messages(self, value):
-        self._set(8192, value)
+        
+    async def perm(perm : discord.Permissions):
+        if perm is not True:
+            raise NoPermError
 
 def setup(bot):
     bot.add_cog(Perms(bot))
