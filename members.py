@@ -26,7 +26,7 @@ class Members():
         await self.bot.say('**{0.name} joined in __{0.joined_at}__**'.format(member))
     
     @commands.command(pass_context=True)
-    async def set_welcome(self, ctx, mesg1, mesg2):
+    async def setwelcome(self, ctx, mesg1, mesg2):
         wchannel = ctx.message.channel
         emb = discord.Embed(title="DONE!", description=f":blue_book: Welcome-message set to this channel!\nWhen a member joins: **{mesg1}**\nWhen a member leaves: **{mesg2}**", colour=0x3498db)
         emb.set_thumbnail(url="https://discordapp.com/assets/c6b26ba81f44b0c43697852e1e1d1420.svg")
