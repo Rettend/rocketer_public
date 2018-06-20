@@ -34,13 +34,13 @@ class Members():
 
     @bot.event
     async def on_member_join(self, member):
-        em = discord.Embed(title=f"{member.metion} joined!", description="mesg1", colour=0x3498db)
+        em = discord.Embed(title=f"{ctx.member.mention} joined!", description="mesg1", colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/391322023739129856.png?v=1")
         await bot.send_message(wchannel, embed=em)
         
     @bot.event
     async def on_member_remove(self, member):
-        embed = discord.Embed(title=f"{member.metion} joined!", description="mesg2", colour=0x3498db)
+        embed = discord.Embed(title=f"{ctx.member.name} joined!", description="mesg2", colour=0x3498db)
         embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/421004865049985035.png?v=1")
         await bot.send_message(wchannel, embed=embed)
     
